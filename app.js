@@ -50,7 +50,7 @@ app.post("/signIn",(req,res)=>{
                     )
                     
                 } else {
-                    res.json({"status":"incorrect password","userId":response[0]._id,"token":token})
+                    res.json({"status":"incorrect password"})
                     
                 }
             })
