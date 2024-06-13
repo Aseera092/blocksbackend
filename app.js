@@ -27,6 +27,25 @@ app.post("/signup",async(req,res)=>{
   blog.save()
     res.json({"status":"success"})
 })
+
+app.post("/Viewers",(req,res)=>{
+    let token=req.headers["token"]
+    jsonwebtoken.verify(token,"blog-app",(error,decoded)=>{
+        if (error) {
+            res.json({"status":"Unauthorised access"})
+            
+        } else {
+            if(decoded)
+                {
+                    blogmodel.find().then(
+                        (response)=>{
+                            res.json(response)
+                        }
+                    ).catch()
+                }
+        }
+    })
+})
 // api for signIn
 app.post("/signIn",(req,res)=>{
     let input=req.body
