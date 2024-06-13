@@ -26,6 +26,7 @@ app.post("/signup",async(req,res)=>{
   blog.save()
     res.json({"status":"success"})
 })
+app.post("/signIn")
 
 app.listen(8081,()=>{
     console.log("server start")
